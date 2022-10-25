@@ -13,31 +13,98 @@ header {
 }
 
 body {
-    padding: 20px;
+    padding: 5px;
+    padding-top: 20px;
 }
 
 #map {
     position: relative;
     display: flex;
+    flex-direction: row;
     width: 100%;
     height: 100%;
+    padding-top: 15px;
 }
 
 #sidebar {
-    background-color: blue;
+    background-color: rgb(211, 171, 118);
     display: block;
     width: 100px;
     height: 100%;
+    margin-top:-15px;
+    position: relative;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    box-sizing: border-box;
+}
+#sidebar::before {
+    content: "";
+    z-index: -1;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    top: -15px;
+    /* heightの半分 */
+    border-radius: 50%;
+    background: rgb(211, 171, 118);
+    border: 2px solid black;
+    box-sizing: border-box;
+    margin-left: -2px;
 }
 
+#sidebar::after {
+    content: "";
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    top: calc(100% - 15px);
+    /* 本体のheight - heightの半分 */
+    border-radius: 50%;
+    background: rgba(152, 123, 84);
+    border: 2px solid black;
+    box-sizing: border-box;
+    margin-left: -2px;
+}
+
+
 #main {
-    background-color: rosybrown;
+    background-color: rgb(211, 171, 118);
+    flex-grow: 1;
+    height: 100%;
+    margin-left: -50px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+#sea {
+    background-color: #79BAF2;
     width: 100%;
     height: 100%;
 }
 
+#object {
+    margin-left: 50px;
+}
+
 #items { 
-    
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
 
 }
 
+.item {
+    width: 80px;
+    height: 80px;
+    border: 2px solid black;
+}
+
+.item::before {
+    content: “”;
+    display: block;
+    padding-top: 100%;
+}
