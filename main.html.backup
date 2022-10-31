@@ -1,0 +1,47 @@
+<div id="map">
+            <div id="sidebar">
+                <div id="items">
+                    <div id="make-ship" class="item">ADD NEW SHIP</div>
+                    <div id="make-island" class="item">ADD NEW ISLAND</div>
+                    <div id="delete-object" class="item">delete</div>
+                </div>
+            </div>
+            <div id="main">
+                <div id="sea">
+                    <div id="object">
+                        <div id="islands">
+                            <div id="island1">
+                                <div class="islandtop"></div>
+                                <div class="islandbottom1"></div>
+                                <div class="islandbottom2"></div>
+                            </div>
+                            <div id="island2">
+                                <div class="islandtop"></div>
+                                <div class="islandbottom1"></div>
+                                <div class="islandbottom2"></div>
+                            </div>
+                            <div id="island3">
+                                <div class="islandtop"></div>
+                                <div class="islandbottom1"></div>
+                                <div class="islandbottom2"></div>
+                            </div>
+                            <div id="island4">
+                                <div class="islandtop"></div>
+                                <div class="islandbottom1"></div>
+                                <div class="islandbottom2"></div>
+                            </div>
+                        </div>
+                        <div id="ship">
+                            <div id="flag">
+                                <div class="line"></div>
+                                <div class="left"></div>
+                                <div class="right"></div>
+                                <div class="bottom"></div>
+                                <div class="top"></div>
+                            </div>
+                            <div class="body"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
