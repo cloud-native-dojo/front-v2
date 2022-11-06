@@ -1,5 +1,5 @@
 window.onload = function () {
-    var canvas = new fabric.Canvas('cvs');
+    var canvas = new fabric.Canvas('cvs',);
 
     window.addEventListener('resize', resizeCanvas, false);
 
@@ -14,6 +14,21 @@ window.onload = function () {
 
     //キャンバス上でのマウスホイール操作をハンドリングする
     canvas.on('mouse:wheel', function (e) { mousewheel(e); });
+    canvas.on({
+        'object:moving': onChange,
+        'object:scaling': onChange,
+        'object:rotating': onChange,
+    });
+
+    function onChange(options) {
+        options.target.setCoords();
+        canvas.forEachObject(function (obj) {
+            if (obj === options.target) return;
+            if (obj.id == "island") {
+                obj.set('opacity', options.target.intersectsWithObject(obj) ? 0.5 : 1);
+            }
+        });
+    }
 
     function mousewheel(e) {
             //ポインタの位置取得
@@ -25,7 +40,6 @@ window.onload = function () {
 
             //現在の拡大倍率の取得
             let zoom = canvas.getZoom();
-            console.log(zoom);
             if (zoom < 0.5) {
                 zoom = 0.5;
             }
@@ -37,21 +51,19 @@ window.onload = function () {
 
 
     
-    //円
-    var cirle=new fabric.Circle({
+    //地球
+    var circle=new fabric.Circle({
         left: (window.innerWidth / 2)-500, top: (window.innerHeight / 2)-500, radius: 500, stroke: 'black',fill: 'lightblue'
     });
 
-    canvas.add(cirle);
+    canvas.add(circle);
 
-    cirle.selectable = false; //地球固定
-    
+    circle.selectable = false; //地球固定
 
-
-
-
-
-
+    //船(仮)
+    var ship = new fabric.Circle({
+        id: ship, hasControls: false, left: (window.innerWidth / 2) - 50, top: (window.innerHeight / 2) - 50, radius: 50, stroke: 'black', fill: 'brown'
+    });
 
 
     //島 400 350
@@ -100,14 +112,21 @@ window.onload = function () {
     );
 
 
-    var  island = new fabric.Group([tree1,tree2,tree3,island1, island2,wavebrige1,wavebrige2,wavebrige3]);
+    var  island = new fabric.Group([tree1,tree2,tree3,island1, island2,wavebrige1,wavebrige2,wavebrige3], {id: "island"});
     
     var  ball = new fabric.Group([bridge,wavebrige4,wavebrige5]);
     canvas.add(island);
     canvas.add(ball);
+    canvas.add(ship);
 
+    canvas.preserveObjectStacking = true;
     island.selectable = false;
     ball.selectable = false;
+
+    circle.moveTo(0);
+    island.moveTo(1);
+    ship.moveTo(2);
+    ball.moveTo(3);
 
 
   

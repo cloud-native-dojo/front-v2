@@ -1,0 +1,268 @@
+@charset "UTF-8";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body,
+header {
+    height: 100%;
+}
+
+body {
+    padding: 5px;
+    padding-top: 20px;
+}
+
+#map {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    padding-top: 15px;
+}
+
+#sidebar {
+    background-color: rgb(211, 171, 118);
+    display: block;
+    width: 100px;
+    height: 100%;
+    margin-top:-15px;
+    position: relative;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    box-sizing: border-box;
+}
+#sidebar::before {
+    content: "";
+    z-index: -1;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    top: -15px;
+    /* heightの半分 */
+    border-radius: 50%;
+    background: rgb(211, 171, 118);
+    border: 2px solid black;
+    box-sizing: border-box;
+    margin-left: -2px;
+}
+
+#sidebar::after {
+    content: "";
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    top: calc(100% - 15px);
+    /* 本体のheight - heightの半分 */
+    border-radius: 50%;
+    background: rgba(152, 123, 84);
+    border: 2px solid black;
+    box-sizing: border-box;
+    margin-left: -2px;
+}
+
+
+#main {
+    background-color: rgb(211, 171, 118);
+    flex-grow: 1;
+    height: 100%;
+    margin-left: -50px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+#sea {
+    background-color: #79BAF2;
+    width: 100%;
+    height: 100%;
+}
+
+#object {
+    margin-left: 50px;
+    position: relative;
+    left: 300px;
+    
+}
+
+#items { 
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+
+}
+
+.item {
+    width: 80px;
+    height: 80px;
+    border: 2px solid black;
+}
+
+.item::before {
+    content: “”;
+    display: block;
+    padding-top: 100%;
+}
+
+
+
+#island1{
+    position: relative;
+    top: 60px;
+}
+
+#island2{
+    position: absolute;
+    left: 300px;
+    top: 70px;
+} 
+
+#island3{
+    position: absolute;
+    top: -90px;
+} 
+
+
+#island4{
+    position: absolute;
+    left: 300px;
+    top: -90px;
+} 
+
+.islandtop{
+    width: 100px;
+    height: 50px;
+    position: relative;
+    border: solid 2px black;
+    border-radius: 100px 100px 0 0; /* 左側を丸める */
+    border-bottom: 0;
+    top: 200px;
+    left: 20px;
+    background-color: green;
+}
+
+.islandbottom1{
+    width: 50px;
+    height: 30px;
+    position: relative;
+    border: solid 2px black;
+    border-radius: 100px 100px 0 0; /* 左側を丸める */
+    border-bottom: 0;
+    border-color: greenyellow;
+    background-color: greenyellow;
+    top: 170px;
+    left: 24px;
+
+}
+
+.islandbottom2{
+    width: 50px;
+    height: 30px;
+    position: relative;
+    border: solid 2px black;
+    border-radius: 100px 100px 0 0; /* 左側を丸める */
+    border-bottom: 0;
+    border-color: greenyellow;
+    background-color: greenyellow;
+    top: 140px;
+    left: 67px;
+
+}
+
+
+
+
+#ship{
+    position: relative;
+    left: 80px;
+
+
+}
+
+
+
+.line {
+    
+    width: 50px;
+    height: 50px;
+    position: relative;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    box-sizing: border-box;
+    top: 100px;
+	left:50px;
+}
+
+
+.left{
+
+    width: 20px;
+    height: 50px;
+    position: relative;
+    border: solid 2px black;
+    border-radius: 75px 0 0 75px; /* 左側を丸める */
+    border-right: 0; /* 直線部分を消す */
+    top: 50px;
+	left:30px;
+
+}
+
+.right{
+    width: 20px;
+    height: 50px;
+    position: relative;
+    border: solid 2px black;
+    border-radius: 75px 0 0 75px; /* 左側を丸める */
+    border-right: 0; /* 直線部分を消す */
+    top: 0px;
+	left:80px;
+}
+.bottom{
+    width: 0px;
+    height: 15px;
+    position: relative;
+    border-left: 2px solid black;
+    left: 65px;
+}
+
+.top{
+    width: 0px;
+    height: 15px;
+    position: relative;;
+    border-left: 2px solid black;
+    left: 65px;
+    top:-78px;
+
+}
+
+
+.body{
+    width: 80px;
+    height: 40px;
+    position: relative;
+    border: solid 2px black;
+    border-radius: 0 0 100px 100px; /* 左側を丸める */
+    background-color: brown;
+    top: -15px;
+	left:30px;
+
+}
+
+#cvs {
+    display: block;
+}
+
+html,
+body,
+#wrapper {
+    width: 100%;
+    height: 100%;
+}
