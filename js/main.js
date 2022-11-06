@@ -60,11 +60,6 @@ window.onload = function () {
 
     circle.selectable = false; //地球固定
 
-    //船(仮)
-    var ship = new fabric.Circle({
-        id: ship, hasControls: false, left: (window.innerWidth / 2) - 50, top: (window.innerHeight / 2) - 50, radius: 50, stroke: 'black', fill: 'brown'
-    });
-
 
     //島 400 350
     //土台
@@ -117,16 +112,79 @@ window.onload = function () {
     var  ball = new fabric.Group([bridge,wavebrige4,wavebrige5]);
     canvas.add(island);
     canvas.add(ball);
-    canvas.add(ship);
 
     canvas.preserveObjectStacking = true;
     island.selectable = false;
     ball.selectable = false;
 
-    circle.moveTo(0);
-    island.moveTo(1);
-    ship.moveTo(2);
-    ball.moveTo(3);
+
+    //船 700 300
+   
+
+    //帆
+    var ship1 = new fabric.Path('M 700 300 L  700 320 730 320 C 730 320 710 340 730 360 L 670 360 C 670 360 650 340 670 320 L 700 320 M 700 360 L 700 370  ', {stroke: 'brack', fill: 'white', strokeWidth: 2}
+    );
+    //土台
+    var ship2 = new fabric.Path('M 660 370  L 740 370 C 750 370 703 450 660 370', {stroke: 'brack', fill: 'Brown', strokeWidth: 2 ,}
+    );
+    //波
+    var waveship1 =new fabric.Path('M 100 100 C 100 100 107 105 110 100 C 110 100 115 93 120 100 C 120 100 125 107 130 100 C 130 100 135 93 140 100', {stroke: '#4169E1', fill:"", strokeWidth: 7 , left: 652 ,top:400}
+    );
+    var waveship2 =new fabric.Path('M 100 100 C 100 100 107 105 110 100 C 110 100 115 93 120 100 C 120 100 125 107 130 100 C 130 100 135 93 140 100', {stroke: '#4169E1', fill:"", strokeWidth: 7, left: 691 ,top:400}
+    );
+
+
+    var ship = new fabric.Group([ship1, ship2, waveship1, waveship2], { hasControls: false });
+    canvas.add(ship);
+
+    //重なり
+    canvas.moveTo(circle,0);
+    canvas.moveTo(island, 1);
+    canvas.moveTo(ship, 2);
+    canvas.moveTo(bridge, 3);
+    
+    
+
+    
+
+
+    
+
+/*
+
+    //船 
+   
+    //帆 
+    var ship1 = new fabric.Path('M 650 250 L 650 270 680 270 C 680 270 660 290 680 310 L 620 310 C 620 310 600 290 620 270 L 650 270 M 650 310 L 650 320  ', {stroke: 'brack', fill: 'white', strokeWidth: 2}
+    );
+    //土台
+    var ship2 = new fabric.Path('M 610 320  L 690 320 C 700 320 653 400 610 320', {stroke: 'brack', fill: 'SaddleBrown', strokeWidth: 2}
+    );
+
+    var  ship = new fabric.Group([ship1, ship2], {left: 800, top: 360});
+    canvas.add(ship);
+
+    
+
+    //島
+    //土台
+    var island1 = new fabric.Path('M 390 360  L 510 360 C 510 360 453 240 390 360', {stroke: 'brack', fill: '#F5DEB3', strokeWidth: 2}
+    );
+    //上  C 475 340 485 370 500 340
+    var island2 =new fabric.Path('M 400 340 C 400 340 400 370 425 340 C 425 340 440 370 475 340 C 475 340 485 370 500 340 C 500 340 453 240 400 340', {stroke: 'brack', fill: '#7FFF00', strokeWidth: 2}
+    );
+
+    var  island = new fabric.Group([island1, island2 ],{left: 500, top: 400});
+    canvas.add(island);
+
+    //橋
+    var a = new fabric.Path('M 100 100 L 300 100 275 150 z',{stroke: 'brack', fill: '#7FFF00', strokeWidth: 2})
+    canvas.add(a);
+*/
+/*
+    var wave =new fabric.Path('M 100 100 C 100 100 105 110 110 100 C 110 100 115 90 120 100 C 120 100 125 110 130 100 C 130 100 135 90 140 100', {stroke: '#4169E1', fill:"", strokeWidth: 3}
+    );
+*/
 
 
   
