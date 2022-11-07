@@ -13,7 +13,7 @@ window.onload = function () {
 
 
     //キャンバス上でのマウスホイール操作をハンドリングする
-    canvas.on('mouse:wheel', function (e) { mousewheel(e); });
+    canvas.on('mouse:wheel', function (opt) { mousewheel(opt); });
     canvas.on({
         'object:moving': onChange,
         'object:scaling': onChange,
@@ -30,21 +30,19 @@ window.onload = function () {
         });
     }
 
-    function mousewheel(e) {
-            //ポインタの位置取得
-            const mouseX = e.pointer.x;
-            const mouseY = e.pointer.y;
+    function mousewheel(opt) {
 
-            //ホイール回転の取得
-            const deltaY = e.e.wheelDeltaY;
+        //ホイール回転の取得
+        var delta = opt.e.deltaY;
 
-            //現在の拡大倍率の取得
-            let zoom = canvas.getZoom();
-            if (zoom < 0.5) {
-                zoom = 0.5;
-            }
-            //マウス位置を原点として拡大縮小
-            canvas.zoomToPoint(new fabric.Point((window.innerWidth / 2), (window.innerHeight / 2)), zoom + deltaY / 2400);
+         //現在の拡大倍率の取得
+        let zoom = canvas.getZoom();
+        if (zoom > 20) zoom = 20;
+        if (zoom < 0.5) zoom = 0.5;
+        canvas.zoomToPoint(new fabric.Point(canvas.width / 2, canvas.height / 2), canvas.getZoom() / 1.2);
+        opt.e.preventDefault();
+        opt.e.stopPropagation();
+        //マウス位置を原点として拡大縮小
 
             
     }
@@ -119,8 +117,6 @@ window.onload = function () {
 
 
     //船 700 300
-   
-
     //帆
     var ship1 = new fabric.Path('M 700 300 L  700 320 730 320 C 730 320 710 340 730 360 L 670 360 C 670 360 650 340 670 320 L 700 320 M 700 360 L 700 370  ', {stroke: 'brack', fill: 'white', strokeWidth: 2}
     );
@@ -134,7 +130,7 @@ window.onload = function () {
     );
 
 
-    var ship = new fabric.Group([ship1, ship2, waveship1, waveship2], { hasControls: false });
+    var ship = new fabric.Group([ship1, ship2, waveship1, waveship2], {id:"ship", hasControls: false });
     canvas.add(ship);
 
     //重なり
@@ -142,6 +138,7 @@ window.onload = function () {
     canvas.moveTo(island, 1);
     canvas.moveTo(ship, 2);
     canvas.moveTo(bridge, 3);
+    console.log(ship._objects);
     
     
 
