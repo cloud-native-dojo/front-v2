@@ -39,7 +39,8 @@ window.onload = function () {
         let zoom = canvas.getZoom();
         if (zoom > 20) zoom = 20;
         if (zoom < 0.5) zoom = 0.5;
-        canvas.zoomToPoint(new fabric.Point(canvas.width / 2, canvas.height / 2), canvas.getZoom() / 1.2);
+        zoom *= 0.999 ** delta;
+        canvas.zoomToPoint(new fabric.Point(canvas.width / 2, canvas.height / 2), zoom);
         opt.e.preventDefault();
         opt.e.stopPropagation();
         //マウス位置を原点として拡大縮小
